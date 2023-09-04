@@ -11,7 +11,6 @@ const rock_div = document.getElementById("r");
 const paper_div = document.getElementById("p");
 const scissor_div = document.getElementById("s");
 
-
 function win() {
     console.log(" YOU WON");
     userScore++
@@ -31,6 +30,17 @@ function draw() {
 function game(userChoice) {
     const computerChoice = getComputerChoice();
     console.log("computer: " + computerChoice);
+
+    const element1 = document.getElementById(userChoice);
+    element1.classList.add('hotpink-glow');
+
+    const element2 = document.getElementById(computerChoice);
+    element2.classList.add('blue-glow');
+
+    setTimeout(() => {
+        element2.classList.remove('blue-glow');
+        element1.classList.remove('hotpink-glow');
+    }, 1000);
 
     switch (userChoice + computerChoice) {
         case"pr":
@@ -58,15 +68,15 @@ function game(userChoice) {
             lose();
             break;
         case"rr":
-            result_div.innerHTML = TIE;
+            result_div.innerHTML = "TIE";
             draw();
             break;
         case"pp":
-            result_div.innerHTML = TIE;
+            result_div.innerHTML = "TIE";
             draw();
             break;
         case"ss":
-            result_div.innerHTML = TIE;
+            result_div.innerHTML = "TIE";
             draw();
             break;
     }
